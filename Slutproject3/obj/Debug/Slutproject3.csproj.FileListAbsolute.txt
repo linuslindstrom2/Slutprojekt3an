@@ -1,0 +1,15 @@
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe.config
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.pdb
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csprojAssemblyReference.cache
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\MainWindow.g.cs
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\App.g.cs
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3_MarkupCompile.cache
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3_MarkupCompile.lref
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\MainWindow.baml
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.g.resources
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.Properties.Resources.resources
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csproj.GenerateResource.cache
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csproj.CoreCompileInputs.cache
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.exe
+C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.pdb
