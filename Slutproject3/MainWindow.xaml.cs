@@ -15,48 +15,108 @@ using System.Windows.Shapes;
 
 namespace Slutproject3
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
         public MainWindow()
         {
-
             InitializeComponent();
-
-
             
-        }
+        } 
 
-
-        private void MyGrid_Loaded_1(object sender, RoutedEventArgs e)
+        public void MyGrid_Loaded_1(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 var row = new RowDefinition();
-                row.Height = new GridLength(45);
+                row.Height = new GridLength(60);
                 MyGrid.RowDefinitions.Add(row);
                 var col = new ColumnDefinition();
-                col.Width = new GridLength(50);
+                col.Width = new GridLength(60);
                 MyGrid.ColumnDefinitions.Add(col);
-
             }
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 5; i < 8; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    var temp = new Button();
-                    temp.Click += new RoutedEventHandler((sender, e) =>
+                    Ellipse rec = new Ellipse()
                     {
-                        //Det som ska hända
-                    });
-                    Grid.SetRow(temp, i);
-                    Grid.SetColumn(temp, j);
-                    MyGrid.Children.Add(temp);
+                        Fill = Brushes.Blue,
+                        Stroke = Brushes.Black,
+                        Width = 59,
+                        Height = 59,
+                    };
+
+                    Grid.SetRow(rec, i);
+                    Grid.SetColumn(rec, j);
+                    MyGrid.Children.Add(rec);
                 }
             }
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 5; j < 8; j++)
+                {
+                    Ellipse rec = new Ellipse()
+                    {
+                        Fill = Brushes.Red,
+                        Stroke = Brushes.Black,
+                        Width = 59,
+                        Height = 59,
+                    };
+
+                    Grid.SetRow(rec, i);
+                    Grid.SetColumn(rec, j);
+                    MyGrid.Children.Add(rec);
+                }
+            }
+
+            for (int i = 5; i < 8; i++)
+            {
+                for (int j = 8; j < 13; j++)
+                {
+                    Ellipse rec = new Ellipse()
+                    {
+                        Fill = Brushes.Green,
+                        Stroke = Brushes.Black,
+                        Width = 59,
+                        Height = 59,
+                    };
+
+                    Grid.SetRow(rec, i);
+                    Grid.SetColumn(rec, j);
+                    MyGrid.Children.Add(rec);
+                }
+            }
+
+            for (int i = 8; i < 13; i++)
+            {
+                for (int j = 5; j < 8; j++)
+                {
+                    Ellipse rec = new Ellipse()
+                    {
+                        Fill = Brushes.Yellow,
+                        Stroke = Brushes.Black,
+                        Width = 59,
+                        Height = 59,
+                    };
+
+                    Grid.SetRow(rec, i);
+                    Grid.SetColumn(rec, j);
+                    MyGrid.Children.Add(rec);
+                }
+            }
+
+            Ellipse Goal = new Ellipse()
+            {
+                Fill = Brushes.Purple,
+                Stroke = Brushes.Black,
+                Width = 170,
+                Height = 170,
+            };
+            Grid.SetRow(Goal, 5);
+            Grid.SetColumn(Goal, 5);
+            MyGrid.Children.Add(Goal);
         }
     }
 }
