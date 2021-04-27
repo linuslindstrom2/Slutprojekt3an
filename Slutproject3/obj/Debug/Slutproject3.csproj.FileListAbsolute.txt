@@ -27,3 +27,4 @@ D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutprojec
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csproj.CoreCompileInputs.cache
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.exe
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.pdb
+D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csprojAssemblyReference.cache
