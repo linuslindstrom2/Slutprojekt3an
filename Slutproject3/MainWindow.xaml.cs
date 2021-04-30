@@ -43,7 +43,7 @@ namespace Slutproject3
                 {
                     Ellipse rec = new Ellipse()
                     {
-                        Fill = Brushes.Black,
+                        Fill = Brushes.White,
                         Stroke = Brushes.Black,
                         Width = 58,
                         Height = 58,
@@ -61,7 +61,7 @@ namespace Slutproject3
                 {
                     Ellipse rec = new Ellipse()
                     {
-                        Fill = Brushes.Black,
+                        Fill = Brushes.White,
                         Stroke = Brushes.Black,
                         Width = 58,
                         Height = 58,
@@ -175,7 +175,7 @@ namespace Slutproject3
 
             Ellipse Goal = new Ellipse()
             {
-                Fill = Brushes.Purple,
+                Fill = Brushes.Green,
                 Stroke = Brushes.Black,
                 Width = 58,
                 Height = 58,
