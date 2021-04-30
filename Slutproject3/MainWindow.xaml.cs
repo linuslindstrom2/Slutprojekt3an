@@ -175,7 +175,7 @@ namespace Slutproject3
 
             Ellipse Goal = new Ellipse()
             {
-                Fill = Brushes.Blue,
+                Fill = Brushes.Red,
                 Stroke = Brushes.Black,
                 Width = 58,
                 Height = 58,
