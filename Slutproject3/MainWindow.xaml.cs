@@ -175,15 +175,10 @@ namespace Slutproject3
 
             Ellipse Goal = new Ellipse()
             {
-<<<<<<< Updated upstream
+
                 Fill = Brushes.Red,
-=======
-<<<<<<< HEAD
-                Fill = Brushes.Yellow,
-=======
-                Fill = Brushes.Red,
->>>>>>> 648b43d06037b582f2f9b07c9b358c40aebf7bc9
->>>>>>> Stashed changes
+
+                
                 Stroke = Brushes.Black,
                 Width = 58,
                 Height = 58,
