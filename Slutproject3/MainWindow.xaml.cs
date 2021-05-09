@@ -12,16 +12,76 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Slutproject3
 {
     public partial class MainWindow : Window 
     {
+        Rectangle landingRec;
+
+        Rectangle redPlayer;
+        Rectangle bluePlayer;
+
+        List<Rectangle> Moves = new List<Rectangle>();
+
+        DispatcherTimer gameTimer = new DispatcherTimer();
+
+        ImageBrush redPlayerImage = new ImageBrush();
+        ImageBrush bluePlayerImage = new ImageBrush();
+
+        int i = -1;
+        int j = -1;
+
+        int redPlayerPosition;
+        int redPLayerCurrentPosition;
+
+        int bluePlayerPosition;
+        int bluePLayerCurrentPosition;
+
+        int images = -1;
+
+        Random rand = new Random();
+
+        bool redPLayerRound, bluePlayerRound;
+
+        int tempPosition;
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            SetupGame();
         } 
+
+        private void SetupGame()
+        {
+            int DefaultLeftPositionRed = 10;
+            int DefaultTopPositionRed = 500;
+
+            int a = 0;
+
+            redPlayerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/RödPjäs.png"));
+            
+
+            
+
+        }
+
+        private void RestartGame()
+        {
+
+        }
+
+        private int CheckKnuff(int num)
+        {
+            return num;
+        }
+
+        private void MovePlayer(Rectangle player, string positionName)
+        {
+
+        }
 
         public void MyGrid_Loaded(object sender, EventArgs e)
         {
@@ -240,7 +300,9 @@ namespace Slutproject3
             Grid.SetColumnSpan(YellowStart , 3);
             Grid.SetRowSpan(YellowStart, 3);
 
-           
+            
+
+
         }
     }
 }

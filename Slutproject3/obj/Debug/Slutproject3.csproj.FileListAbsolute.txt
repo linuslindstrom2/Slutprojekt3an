@@ -13,13 +13,13 @@ C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug
 C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csproj.CoreCompileInputs.cache
 C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.exe
 C:\Users\linus.lindstrom3\Documents\GitHub\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.pdb
+D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe.config
+D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe
+D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.pdb
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\MainWindow.g.cs
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\App.g.cs
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3_MarkupCompile.cache
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3_MarkupCompile.lref
-D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe.config
-D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.exe
-D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\bin\Debug\Slutproject3.pdb
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\MainWindow.baml
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.g.resources
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.Properties.Resources.resources
@@ -27,4 +27,3 @@ D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutprojec
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csproj.CoreCompileInputs.cache
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.exe
 D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.pdb
-D:\Program Files (x86)\Skolsaker\Programering\Projects\Slutprojekt3an\Slutproject3\obj\Debug\Slutproject3.csprojAssemblyReference.cache
