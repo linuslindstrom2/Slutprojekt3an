@@ -18,35 +18,13 @@ namespace Slutproject3
 {
     public partial class MainWindow : Window 
     {
-        Rectangle landingRec; 
+        Rectangle player;
 
-        Rectangle redPlayer;
-        Rectangle bluePlayer;
-
-        List<Rectangle> Moves = new List<Rectangle>();
-
-        DispatcherTimer gameTimer = new DispatcherTimer();
+        List<string> Positions = new List<string>();
 
         ImageBrush redPlayerImage = new ImageBrush();
         ImageBrush bluePlayerImage = new ImageBrush();
-
-        int i = -1;
-        int j = -1;
-
-        int redPlayerPosition;
-        int redPLayerCurrentPosition;
-
-        int bluePlayerPosition;
-        int bluePLayerCurrentPosition;
-
-        int images = -1;
-
-        Random rand = new Random();
-
-        bool redPLayerRound, bluePlayerRound;
-
-        int tempPosition;
-
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -56,16 +34,36 @@ namespace Slutproject3
 
         private void SetupGame()
         {
-            int DefaultLeftPositionRed = 10;
-            int DefaultTopPositionRed = 500;
-
-            int a = 0;
-
             redPlayerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/RödPjäs.png"));
             
-
+           
             
+            for (int i = 0; i < 10; i++)
+            {
+                Positions.Add("RedPath" + i+1);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Positions.Add("GreenPath" + i + 1);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Positions.Add("YellowPath" + i + 1);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                Positions.Add("RedPath" + i + 1);
+            }
 
+            player = new Rectangle
+            {
+                Height = 30,
+                Width = 30,
+                Fill = redPlayerImage,
+                StrokeThickness = 2
+            };
+
+            MovePlayer(player, Positions[4]);
         }
 
         private void RestartGame()
@@ -80,7 +78,23 @@ namespace Slutproject3
 
         private void MovePlayer(Rectangle player, string positionName)
         {
+           
+        }
 
+        public void AddCircleToGrid(Brush fill, Brush stroke, int radius, int i, int row, int collumn, string färg)
+        {
+            Ellipse rec = new Ellipse()
+            {
+                Fill = fill,
+                Stroke = stroke,
+                Width = radius,
+                Height = radius,
+            };
+            Grid.SetRow(rec, row);
+            Grid.SetColumn(rec, collumn);
+            MyGrid.Children.Add(rec);
+            rec.Name = färg + i.ToString();
+            Positions.Add(rec.Name);            //Vet ej hur jag ska lägga till cirklarna i Listan
         }
 
         public void MyGrid_Loaded(object sender, EventArgs e)
@@ -94,336 +108,113 @@ namespace Slutproject3
                 var col = new ColumnDefinition();
                 col.Width = new GridLength(60);
                 MyGrid.ColumnDefinitions.Add(col);
+                
             }
-            
+
+            TextBox Text = new TextBox();
+
+
             for (int j = 1; j < 6; j++)
             {
                 int i = 1;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, j);
-                Grid.SetColumn(rec, 7);
-                MyGrid.Children.Add(rec);
-                rec.Name = "RedPath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, j, 7, "RedPath");
                 i += 1;
             }
 
             for (int j = 8; j < 12; j++)
             {
                 int i = 6;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, 5);
-                Grid.SetColumn(rec, j);
-                MyGrid.Children.Add(rec);
-                rec.Name = "RedPath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, 5, j, "RedPath");
                 i += 1;
             }
 
             for (int j = 7; j < 12; j++)
             {
                 int i = 5;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, 7);
-                Grid.SetColumn(rec, j);
-                MyGrid.Children.Add(rec);
-                rec.Name = "GreenPath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, 7, j, "GreenPath");
                 i -= 1;
             }
+
             for (int j = 8; j < 12; j++)
             {
                 int i = 6;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, j);
-                Grid.SetColumn(rec, 7);
-                MyGrid.Children.Add(rec);
-                rec.Name = "GreenPath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, j, 7, "GreenPath");
                 i += 1;
-
-                }
+            }
             
-
             for (int j = 7; j < 12; j++)
             {
                 int i = 5;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, j);
-                Grid.SetColumn(rec, 5);
-                MyGrid.Children.Add(rec);
-                rec.Name = "YellowPath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, j, 5, "YellowPath");
                 i -= 1;
             }
-
-            for (int j = 1; j < 5; j++)
-            {
-                int i = 9; 
-                    
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, 7);
-                Grid.SetColumn(rec, j);
-                MyGrid.Children.Add(rec);
-                rec.Name = "YellowPath" + i;
-                i -= 1;
-            }
-
-
-            for (int j = 1; j < 6; j++)
-            {
-                int i = 1;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, 5);
-                Grid.SetColumn(rec, j);
-                MyGrid.Children.Add(rec);
-                rec.Name = "BluePath" + i;
-                i += 1;
-            }
-
 
             for (int j = 1; j < 5; j++)
             {
                 int i = 9;
-
-                Ellipse rec = new Ellipse()
-                {
-                    Fill = Brushes.White,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-
-                Grid.SetRow(rec, j);
-                Grid.SetColumn(rec, 5);
-                MyGrid.Children.Add(rec);
-                rec.Name = "BluePath" + i;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, 7, j, "YellowPath");
                 i -= 1;
             }
 
-
-            Ellipse rec1 = new Ellipse()
+            for (int j = 1; j < 6; j++)
             {
-                Fill = Brushes.White,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(rec1, 1);
-            Grid.SetColumn(rec1, 6);
-            MyGrid.Children.Add(rec1);
-            rec1.Name = "BluePath" + 10;
-
-            Ellipse rec2 = new Ellipse()
-            {
-                Fill = Brushes.White,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(rec2, 6);
-            Grid.SetColumn(rec2, 11);
-            MyGrid.Children.Add(rec2);
-            rec1.Name = "RedPath" + 10;
-
-            Ellipse rec3 = new Ellipse()
-            {
-                Fill = Brushes.White,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(rec3, 11);
-            Grid.SetColumn(rec3, 6);
-            MyGrid.Children.Add(rec3);
-            rec1.Name = "GreenPath" + 10;
-
-            Ellipse rec4 = new Ellipse()
-            {
-                Fill = Brushes.White,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(rec4, 6);
-            Grid.SetColumn(rec4, 1);
-            MyGrid.Children.Add(rec4);
-            rec1.Name = "YellowPath" + 10;
-
-
-            for (int i = 2; i < 6; i++)
-            {
-                int nummer = 1;
-                Ellipse BlåMålgång = new Ellipse()
-                {
-                    Fill = Brushes.Blue,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-                Grid.SetRow(BlåMålgång, 6);
-                Grid.SetColumn(BlåMålgång, i);
-                MyGrid.Children.Add(BlåMålgång);
-                BlåMålgång.Name = "BluePath" + i;
-                nummer += 1;
+                int i = 1;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, 5, j, "BluePath");
+                i += 1;
             }
 
-            for (int i = 2; i < 6; i++)
+            for (int j = 1; j < 5; j++)
             {
-                int nummer = 1;
-                Ellipse RödMålgång = new Ellipse()
-                {
-                    Fill = Brushes.Red,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-                Grid.SetRow(RödMålgång, i);
-                Grid.SetColumn(RödMålgång, 6);
-                MyGrid.Children.Add(RödMålgång);
-                RödMålgång.Name = "BluePath" + i;
-                nummer += 1;
+                int i = 9;
+                AddCircleToGrid(Brushes.White, Brushes.Black, 58, i, j, 5, "BluePath");
+                i -= 1;
             }
 
-            for (int i = 7; i < 11; i++)
+            AddCircleToGrid(Brushes.White, Brushes.Black, 58, 10, 1, 6, "BluePath");
+
+            AddCircleToGrid(Brushes.White, Brushes.Black, 58, 10, 6, 11, "RedPath");
+
+            AddCircleToGrid(Brushes.White, Brushes.Black, 58, 10, 11, 6, "GreenPath");
+
+            AddCircleToGrid(Brushes.White, Brushes.Black, 58, 10, 6, 1, "YellowPath");
+
+            for (int j = 2; j < 6; j++)
             {
-                int nummer = 4;
-                Ellipse GrönMålgång = new Ellipse()
-                {
-                    Fill = Brushes.Green,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-                Grid.SetRow(GrönMålgång, 6);
-                Grid.SetColumn(GrönMålgång, i);
-                MyGrid.Children.Add(GrönMålgång);
-                GrönMålgång.Name = "BluePath" + i;
-                nummer -= 1;
+                int i = 1;
+                AddCircleToGrid(Brushes.Blue, Brushes.Black, 58, i, 6, j, "BluePath");
+                i += 1;
             }
 
-            for (int i = 7; i < 11; i++)
+            for (int j = 2; j < 6; j++)
             {
-                int nummer = 4;
-
-                Ellipse GulMålgång = new Ellipse()
-                {
-                    Fill = Brushes.Yellow,
-                    Stroke = Brushes.Black,
-                    Width = 58,
-                    Height = 58,
-                };
-                Grid.SetRow(GulMålgång, i);
-                Grid.SetColumn(GulMålgång, 6);
-                MyGrid.Children.Add(GulMålgång);
-                GulMålgång.Name = "BluePath" + i;
-                nummer -= 1;
+                int i = 1;
+                AddCircleToGrid(Brushes.Red, Brushes.Black, 58, i, j, 6, "BluePath");
+                i += 1;
             }
 
-            Ellipse FörstaBlå = new Ellipse()
+            for (int j = 7; j < 11; j++)
             {
-                Fill = Brushes.Blue,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(FörstaBlå, 5);
-            Grid.SetColumn(FörstaBlå, 1);
-            MyGrid.Children.Add(FörstaBlå);
+                int i = 4;
+                AddCircleToGrid(Brushes.Green, Brushes.Black, 58, i, 6, j, "BluePath");
+                i -= 1;
+            }
 
-            Ellipse FörstaRöd = new Ellipse()
+            for (int j = 7; j < 11; j++)
             {
-                Fill = Brushes.Red,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(FörstaRöd, 1);
-            Grid.SetColumn(FörstaRöd, 7);
-            MyGrid.Children.Add(FörstaRöd);
+                int i = 4;
+                AddCircleToGrid(Brushes.Yellow, Brushes.Black, 58, i, j, 6, "BluePath");
+                i -= 1;
+            }
 
-            Ellipse FörstaGrön = new Ellipse()
-            {
-                Fill = Brushes.Green,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(FörstaGrön, 7);
-            Grid.SetColumn(FörstaGrön, 11);
-            MyGrid.Children.Add(FörstaGrön);
+            AddCircleToGrid(Brushes.Blue, Brushes.Black, 58, 1, 5, 1, "EndastDesign");
 
-            Ellipse FörstaGul = new Ellipse()
-            {
-                Fill = Brushes.Yellow,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(FörstaGul, 11);
-            Grid.SetColumn(FörstaGul, 5);
-            MyGrid.Children.Add(FörstaGul);
+            AddCircleToGrid(Brushes.Red, Brushes.Black, 58, 2, 1, 7, "EndastDesign");
 
-            Ellipse Goal = new Ellipse()
-            {
-                Fill = Brushes.Red,
-                Stroke = Brushes.Black,
-                Width = 58,
-                Height = 58,
-            };
-            Grid.SetRow(Goal, 6);
-            Grid.SetColumn(Goal, 6);
-            MyGrid.Children.Add(Goal);
+            AddCircleToGrid(Brushes.Green, Brushes.Black, 58, 3, 7, 11, "EndastDesign");
+
+            AddCircleToGrid(Brushes.Yellow, Brushes.Black, 58, 4, 11, 5, "EndastDesign");
+
+            AddCircleToGrid(Brushes.Purple, Brushes.Black, 58, 1, 6, 6, "Goal");
 
 
             Ellipse BlueStart = new Ellipse()
@@ -477,7 +268,6 @@ namespace Slutproject3
             MyGrid.Children.Add(YellowStart);
             Grid.SetColumnSpan(YellowStart, 3);
             Grid.SetRowSpan(YellowStart, 3);
-
         }
     }
 }
