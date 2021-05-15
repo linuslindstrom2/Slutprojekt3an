@@ -8,7 +8,7 @@
         Title="MainWindow" Height="900" Width="1200">
     <Grid Name="MyGrid" Loaded="MyGrid_Loaded" Background="White" >
 
-        <Image Source="Images/RödPjäs.png" Width="100" Name="Red1" />
+        
 
     </Grid>
 </Window>
