@@ -26,9 +26,11 @@ namespace Slutproject3
 
         List<Image> DiceSides = new List<Image>();
 
-        ImageBrush redPlayerImage = new ImageBrush();
-        ImageBrush bluePlayerImage = new ImageBrush();
-        int totalPosition = 0; 
+        ImageBrush redPieceImage = new ImageBrush();
+        ImageBrush bluePieceImage = new ImageBrush();
+
+        Player redPlayer = new Player(); 
+        Player bluePlayer = new Player();
 
         public MainWindow()
         {
@@ -37,30 +39,37 @@ namespace Slutproject3
 
         public void SetupGame()
         {
-            redPlayerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/RödPjäs.png"));
-            bluePlayerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/BlåPjäs.png"));
-
-            Rectangle redPlayer = new Rectangle()
+            redPieceImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/RödPjäs.png"));
+            bluePieceImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/BlåPjäs.png"));
+            for (int i = 1; i <= 4; i++)
             {
-                Height = 80,
-                Width = 140,
-                Fill = redPlayerImage,
-                Name = "RedPlayer"
-            };
-            Grid.SetColumn(redPlayer, 10);
-            Grid.SetRow(redPlayer, 2);
-            MyGrid.Children.Add(redPlayer);
+                Rectangle redPiece = new Rectangle()
+                {
+                    Height = 80,
+                    Width = 140,
+                    Fill = redPieceImage,
+                    Name = "RedPiece" + i
+                };
+                Grid.SetColumn(redPiece, 10);
+                Grid.SetRow(redPiece, 2);
+                MyGrid.Children.Add(redPiece);
+                redPlayer.PieceOne = redPiece;
+                redPlayer.pieceOneTotalPosition = -1;
+            }
             
-            Rectangle bluePlayer = new Rectangle()
+
+            Rectangle bluePiece = new Rectangle()
             {
                 Height = 80,
                 Width = 140,
-                Fill = bluePlayerImage,
+                Fill = bluePieceImage,
                 Name = "BluePlayer"
             };
-            Grid.SetColumn(bluePlayer, 2);
-            Grid.SetRow(bluePlayer, 2);
-            MyGrid.Children.Add(bluePlayer);
+            Grid.SetColumn(bluePiece, 2);
+            Grid.SetRow(bluePiece, 2);
+            MyGrid.Children.Add(bluePiece);
+            bluePlayer.PieceOne = bluePiece;
+            bluePlayer.pieceOneTotalPosition = -1;
         }
 
         private void MovePlayer(Rectangle player, int g)
@@ -68,7 +77,7 @@ namespace Slutproject3
             if (g >= 40)
             {
                 g -= 40;
-                if (g >= 5)
+                if (g >= 4)
                 {
                     g = 4;
                     foreach (var element in MyGrid.Children)
@@ -82,7 +91,6 @@ namespace Slutproject3
                         }
                     }
                 }
-               
                 
                 if (player.Name.StartsWith("Red"))
                 {
@@ -117,15 +125,26 @@ namespace Slutproject3
             Random random = new Random();
             int diceNumber = random.Next(1, 7);
 
-            totalPosition += diceNumber;
+            foreach (var element in MyGrid.Children)
+            {
+                if (element is TextBox text)
+                {
+                    if (text.Name == "winning")
+                    {
+                        text.Text = diceNumber.ToString();
+                    }
+                }
+            }
+
+            redPlayer.pieceOneTotalPosition += diceNumber;
 
             foreach (var element in MyGrid.Children)
             {
                 if (element is Rectangle rect)
                 {
-                    if (rect.Name== "RedPlayer")
+                    if (rect.Name== "RedPlayer1")
                     {
-                        MovePlayer(rect, totalPosition);
+                        MovePlayer(rect, redPlayer.pieceOneTotalPosition);
                     }
                 }
             }
@@ -294,7 +313,6 @@ namespace Slutproject3
 
             AddCircleToGrid(Brushes.Yellow, Brushes.Black, 58, 4, 11, 5, "EndastDesign");
 
-
             Ellipse BlueStart = new Ellipse()
             {
                 Fill = Brushes.Blue,
@@ -374,6 +392,8 @@ namespace Slutproject3
             Grid.SetColumn(Winning, 14);
             Grid.SetRow(Winning, 1);
             Grid.SetColumnSpan(Winning, 2);
+
+
 
             MyGrid.Children.Add(Winning);
 
