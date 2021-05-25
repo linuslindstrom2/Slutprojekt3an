@@ -26,12 +26,16 @@ namespace Slutproject3
 
         List<Image> DiceSides = new List<Image>();
 
+        List<String> Turn = new List<String>();
+        
+
         ImageBrush redPieceImage = new ImageBrush();
         ImageBrush bluePieceImage = new ImageBrush();
 
         Player redPlayer = new Player(); 
         Player bluePlayer = new Player();
 
+        int diceNumber = 1;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,8 +43,14 @@ namespace Slutproject3
 
         public void SetupGame()
         {
+            Turn.Add("Red");
+            Turn.Add("Green");
+            Turn.Add("Yellow");
+            Turn.Add("Blue");
+
             redPieceImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/RödPjäs.png"));
             bluePieceImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/BlåPjäs.png"));
+            
             for (int i = 1; i <= 4; i++)
             {
                 Rectangle redPiece = new Rectangle()
@@ -48,28 +58,33 @@ namespace Slutproject3
                     Height = 80,
                     Width = 140,
                     Fill = redPieceImage,
-                    Name = "RedPiece" + i
+                    Name = "RedPiece" + i,
                 };
                 Grid.SetColumn(redPiece, 10);
                 Grid.SetRow(redPiece, 2);
                 MyGrid.Children.Add(redPiece);
                 redPlayer.PieceOne = redPiece;
-                redPlayer.pieceOneTotalPosition = -1;
             }
-            
+            redPlayer.pieceOneTotalPosition = -1; 
+            redPlayer.pieceTwoTotalPosition = -1; 
+            redPlayer.pieceThreeTotalPosition = -1; 
+            redPlayer.pieceFourTotalPosition = -1;
 
-            Rectangle bluePiece = new Rectangle()
+            for (int i = 1; i <= 4; i++)
             {
-                Height = 80,
-                Width = 140,
-                Fill = bluePieceImage,
-                Name = "BluePlayer"
-            };
-            Grid.SetColumn(bluePiece, 2);
-            Grid.SetRow(bluePiece, 2);
-            MyGrid.Children.Add(bluePiece);
-            bluePlayer.PieceOne = bluePiece;
-            bluePlayer.pieceOneTotalPosition = -1;
+                Rectangle bluePiece = new Rectangle()
+                {
+                    Height = 80,
+                    Width = 140,
+                    Fill = bluePieceImage,
+                    Name = "BluePlayer" + i,
+                };
+                Grid.SetColumn(bluePiece, 2);
+                Grid.SetRow(bluePiece, 2);
+                MyGrid.Children.Add(bluePiece);
+                bluePlayer.PieceOne = bluePiece;
+                bluePlayer.pieceOneTotalPosition = -1;
+            }
         }
 
         private void MovePlayer(Rectangle player, int g)
@@ -84,7 +99,7 @@ namespace Slutproject3
                     {
                         if (element is TextBox Winning)
                         {
-                            if (Winning.Name == "winning")
+                            if (Winning.Name == "TextBox")
                             {
                                 Winning.Text += player.Name + " won!!";
                             }
@@ -123,28 +138,15 @@ namespace Slutproject3
         private void RollDice(object sender, RoutedEventArgs e)
         {
             Random random = new Random();
-            int diceNumber = random.Next(1, 7);
+            diceNumber = random.Next(1, 7);
 
             foreach (var element in MyGrid.Children)
             {
                 if (element is TextBox text)
                 {
-                    if (text.Name == "winning")
+                    if (text.Name == "TextBox")
                     {
-                        text.Text = diceNumber.ToString();
-                    }
-                }
-            }
-
-            redPlayer.pieceOneTotalPosition += diceNumber;
-
-            foreach (var element in MyGrid.Children)
-            {
-                if (element is Rectangle rect)
-                {
-                    if (rect.Name== "RedPlayer1")
-                    {
-                        MovePlayer(rect, redPlayer.pieceOneTotalPosition);
+                        text.Text = "Du slog en " + diceNumber.ToString() + ":a." + "\r\n" + "Vilken pjäs vill du flytta?";
                     }
                 }
             }
@@ -368,8 +370,8 @@ namespace Slutproject3
             Button Dice = new Button()
             {
                 Content = "Dice",
-                Width = 100,
-                Height = 100,
+                Width = 120,
+                Height = 120,
                 Background = Brushes.Gray,
                 BorderBrush = Brushes.Black, 
                 
@@ -381,23 +383,148 @@ namespace Slutproject3
             MyGrid.Children.Add(Dice);
             Dice.Click += RollDice;
 
+            Button One = new Button()
+            {
+                Content = "One",
+                Width = 60,
+                Height = 60,
+                Background = Brushes.LightGray,
+                BorderBrush = Brushes.Black,
+            };
+            Grid.SetRow(One, 6);
+            Grid.SetColumn(One, 14);
+            MyGrid.Children.Add(One);
+            One.Click += OneMove;
+
+            Button Two = new Button()
+            {
+                Content = "Two",
+                Width = 60,
+                Height = 60,
+                Background = Brushes.LightGray,
+                BorderBrush = Brushes.Black,
+            };
+            Grid.SetRow(Two, 6);
+            Grid.SetColumn(Two, 15);
+            MyGrid.Children.Add(Two);
+            Two.Click += TwoMove;
+
+            Button Three = new Button()
+            {
+                Content = "Three",
+                Width = 60,
+                Height = 60,
+                Background = Brushes.LightGray,
+                BorderBrush = Brushes.Black,
+            };
+            Grid.SetRow(Three, 7);
+            Grid.SetColumn(Three, 14);
+            MyGrid.Children.Add(Three);
+            Three.Click += ThreeMove;
+
+            Button Four = new Button()
+            {
+                Content = "Four",
+                Width = 60,
+                Height = 60,
+                Background = Brushes.LightGray,
+                BorderBrush = Brushes.Black,
+            };
+            Grid.SetRow(Four, 7);
+            Grid.SetColumn(Four, 15);
+            MyGrid.Children.Add(Four);
+            Four.Click += FourMove;
+
             TextBox Winning = new TextBox
             {
                 Height = 50,
-                Width = 100,
+                Width = 150,
                 Background = Brushes.White,
                 BorderBrush = Brushes.Black,
-                Name = "winning", 
+                Name = "TextBox",
             };
             Grid.SetColumn(Winning, 14);
-            Grid.SetRow(Winning, 1);
+            Grid.SetRow(Winning, 5);
             Grid.SetColumnSpan(Winning, 2);
-
-
-
+            Grid.SetColumnSpan(Winning, 2);
             MyGrid.Children.Add(Winning);
 
             SetupGame();
+        }
+
+        private void OneMove(object sender, RoutedEventArgs e)
+        {
+
+            foreach (var element in MyGrid.Children)
+            {
+                if (element is Rectangle rect)
+                {
+                    if (rect.Name.StartsWith("Red"))
+                    {
+                        if (rect.Name.EndsWith("1"))
+                        {
+                            redPlayer.pieceOneTotalPosition += diceNumber;
+                            MovePlayer(rect, redPlayer.pieceOneTotalPosition);
+                            diceNumber = 0;
+                        }
+                    }
+                }
+            }
+        }
+        private void TwoMove(object sender, RoutedEventArgs e)
+        {
+
+            foreach (var element in MyGrid.Children)
+            {
+                if (element is Rectangle rect)
+                {
+                    if (rect.Name.StartsWith("Red"))
+                    {
+                        if (rect.Name.EndsWith("2"))
+                        {
+                            redPlayer.pieceTwoTotalPosition += diceNumber;
+                            MovePlayer(rect, redPlayer.pieceTwoTotalPosition);
+                            diceNumber = 0;
+                        }
+                    }
+                }
+            }
+        }
+        private void ThreeMove(object sender, RoutedEventArgs e)
+        {
+            foreach (var element in MyGrid.Children)
+            {
+                if (element is Rectangle rect)
+                {
+                    if (rect.Name.StartsWith("Red"))
+                    {
+                        if (rect.Name.EndsWith("3"))
+                        {
+                            redPlayer.pieceThreeTotalPosition += diceNumber;
+                            MovePlayer(rect, redPlayer.pieceThreeTotalPosition);
+                            diceNumber = 0;
+                        }
+                    }
+                }
+            }
+        }
+        private void FourMove(object sender, RoutedEventArgs e)
+        {
+            foreach (var element in MyGrid.Children)
+            {
+                if (element is Rectangle rect)
+                {
+                    if (rect.Name.StartsWith("Red"))
+                    {
+                        if (rect.Name.EndsWith("4"))
+                        {
+                            redPlayer.pieceFourTotalPosition += diceNumber;
+                            MovePlayer(rect, redPlayer.pieceFourTotalPosition);
+                            diceNumber = 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
