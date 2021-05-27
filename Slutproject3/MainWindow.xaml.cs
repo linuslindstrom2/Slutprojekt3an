@@ -27,7 +27,6 @@ namespace Slutproject3
         List<Image> DiceSides = new List<Image>();
 
         List<String> Turn = new List<String>();
-        
 
         ImageBrush redPieceImage = new ImageBrush();
         ImageBrush bluePieceImage = new ImageBrush();
@@ -36,6 +35,7 @@ namespace Slutproject3
         Player bluePlayer = new Player();
 
         int diceNumber = 1;
+        int diceNumberCpu = 1;
         public MainWindow()
         {
             InitializeComponent();
@@ -185,7 +185,7 @@ namespace Slutproject3
             else
             {
                 Positions.Add(rec);
-            }          
+            }
         }
 
         public void AddCircleToGrid(Brush fill, Brush stroke, int radius, int i, int row, int collumn, string färg)
